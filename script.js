@@ -7,11 +7,16 @@ function calculateMinCost() {
     intArray.sort((a,b) => {return a-b});
 	let cost = 0;
 	let n = intArray.length;
-	while (n != 1) {
-		for(let i=0; i<n; i++){
-		cost += intArray[i];
+	while (n > 1) {
+        let arr = intArray.splice(0,2);
+        let sum = arr[0] + arr[1];
+        cost += sum;
+        intArray.push(sum);
+        intArray.sort((a,b) => {return a-b});
+        n = intArray.length;
 	}
-	n--
-	}
+    // if(n <= 1){
+    //     cost += intArray[0];
+    // }
 	document.getElementById("result").innerHTML = cost;
 }
